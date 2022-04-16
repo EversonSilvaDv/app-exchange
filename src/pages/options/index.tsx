@@ -2,8 +2,9 @@ import { Typography, Grid, Button, Box } from '@mui/material';
 import { useAppThemeContext } from '../../contexts';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import React from 'react';
 
-const Options = () => {
+const Options: React.FC = () => {
 
   const { themeName, handleTheme } = useAppThemeContext();
 

@@ -13,8 +13,8 @@ export interface IQuotesObj {
   value: number;
 }
 
-interface ICurrencyContext{
-  currency: string;
+export interface ICurrencyContext{
+  key: string;
   moeda: string
 }
 

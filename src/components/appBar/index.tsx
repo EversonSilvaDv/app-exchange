@@ -1,16 +1,12 @@
-import {  AppBar, Toolbar, Grid, IconButton, Menu, MenuItem } from '@mui/material';
+import {  AppBar, Toolbar, Grid, } from '@mui/material';
 import MenuSpeedDial from '../menuSpeedDial';
-import SettingsIcon from '@mui/icons-material/Settings';
 import MenuOptions from '../menuOptions';
-const AppTopBar: React.FC = () => {
 
-  const teste = () => {
-    console.log('button click');
-  }
+const AppTopBar: React.FC = () => {
 
   return (
     <Grid container >
-      <AppBar position='static'>
+      <AppBar position='fixed'>
         <Toolbar >
           <Grid container justifyContent={'space-between'} alignItems='center'>
 

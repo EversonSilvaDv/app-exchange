@@ -1,14 +1,23 @@
-import { Paper } from '@mui/material';
+import { Paper, Grid, Box} from '@mui/material';
 import AppTopBar from '../appBar/index';
 
-const Layout = (props: any) => {
+const Layout: React.FC = (props: any) => {
   return (
     <>
       <AppTopBar />
 
-      <Paper elevation={3} sx={{minHeight: 'calc(100vh - 195px)'}}>
-        {props.children}
-      </Paper>
+      <Grid mt={7} >
+        <Paper
+          elevation={3} 
+          sx={{
+            minWidth: '1vh',
+            minHeight: 'calc(100vh - 80px)'
+          }}
+        >
+          {props.children}
+        </Paper>
+      </Grid>
+
     </>
   );
 }

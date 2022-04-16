@@ -4,7 +4,7 @@ import { QuotesContextProvider, AppThemeProvider } from './contexts';
 import { SnackbarProvider } from "notistack";
 import './App.css';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <AppThemeProvider>

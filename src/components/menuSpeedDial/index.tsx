@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 
-const MenuSpeedDial = () => {
+const MenuSpeedDial: React.FC = () => {
 
   const navigate = useNavigate();
 
   const actions = [
     {icon: <DashboardIcon />, title: 'Dashboard'},
     {icon: <MonetizationOnIcon />, title: 'Currency'},
+    {icon: <LocalGroceryStoreIcon />, title: 'Simulator'},
     {icon: <AcUnitIcon />, title: 'TestePage'}
   ];
 
@@ -24,6 +26,9 @@ const MenuSpeedDial = () => {
     }
     if (page === 'TestePage') {
       navigate('/test');
+    }
+    if (page === 'Simulator') {
+      navigate('/simulator');
     }
   }
 

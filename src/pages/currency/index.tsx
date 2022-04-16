@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Grid, Tooltip } from '@mui/material';
 import { IQuotesObj, useQuotesContext } from '../../contexts';
 import { useSnackbar } from 'notistack';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import Graphic from './Graphic';
 
@@ -14,18 +13,7 @@ const Currency: React.FC = () => {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  //função de testes
-  const show = () => {
-    objQuotes.forEach((item) => {
-      console.log(`${item.name} : R$ ${calcExchange(item.value)}`);
-    })
-    enqueueSnackbar('Valores calculados',{
-      variant: 'success',
-    });
-  }
-
   useEffect(() => {
-    console.log(objQuotes);
     if (objQuotes.length == 0) {
       enqueueSnackbar('Cotações indisponiveis',{
         variant: 'warning',
@@ -40,48 +28,53 @@ const Currency: React.FC = () => {
   }
 
   const handleKeyQuote = (key: string) => {
-    console.log(key);
+    //console.log(key);
     setKeyQuote(key);
   }
 
   return (
     <>
-      <Typography variant='h4' component={'h2'} align='center'>
-        Currency
-      </Typography>
 
       <Graphic keyQuotes={keyQuote}/>
 
-      <TableContainer component={Paper} sx={{marginRight: '15px'}}>
-        <Table size="small">
+      <Typography variant='h4' component={'h2'} align='center'>
+        Currency quotes
+      </Typography>
 
-          <TableHead>
-            <TableRow>
-              <TableCell>Indice</TableCell>
-              <TableCell>Moeda</TableCell>
-              <TableCell>Valor</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
-          </TableHead>
+      <Grid container justifyContent='center'>
+        <Grid item sx={{width:'95%'}}>
+          <TableContainer elevation={9} component={Paper} sx={{marginRight: '5px', maxHeight: 460}}>
+            <Table stickyHeader size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Index</TableCell>
+                  <TableCell>Currency</TableCell>
+                  <TableCell>Value</TableCell>
+                  <TableCell>Graphic</TableCell>
+                </TableRow>
+              </TableHead>
 
-          <TableBody>
-            {objQuotes.map((item: IQuotesObj) => (
-              <TableRow key={item.key} hover>
-                <TableCell>{item.key}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{`R$ \u00A0${calcExchange(item.value)}`}</TableCell>
-                <TableCell>
-                  <IconButton onClick={() => handleKeyQuote(item.key)}>
-                    <QueryStatsIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+              <TableBody>
+                {objQuotes.map((item: IQuotesObj) => (
+                  <TableRow key={item.key} hover>
+                    <TableCell>{item.key}</TableCell>
+                    <TableCell>{item.name}</TableCell>
+                    <TableCell>{`R$ \u00A0${calcExchange(item.value)}`}</TableCell>
+                    <TableCell>
+                      <Tooltip title='Show graphic'>
+                        <IconButton onClick={() => handleKeyQuote(item.key)}>
+                          <QueryStatsIcon />
+                        </IconButton>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
+      </Grid>
 
-        </Table>
-      </TableContainer>
-      
     </>
   );
 }

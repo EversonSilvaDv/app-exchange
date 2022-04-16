@@ -1,0 +1,18 @@
+API para desenvolvimento
+https://www.frankfurter.app/docs/
+
+MUI Material
+https://mui.com/pt/getting-started/installation/
+
+Axios https
+https://axios-http.com/
+
+Notistack
+https://www.iamhosseindhv.com/notistack
+https://www.npmjs.com/package/notistack
+
+Recharts
+https://recharts.org/en-US/
+
+
+promissAll
